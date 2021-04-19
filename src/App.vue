@@ -1,18 +1,30 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Project
+        v-for="project in projects"
+        v-bind:key="project.id"
+        v-bind:html="project.html"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Project from './components/Project.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Project
+  },
+  data: function() {
+    return {
+      projects: [
+        { id: "1", html: require("./assets/test.md") },
+        { id: "2", html: require("./assets/lisa.md") },
+      ],
+    }
+  },
 }
 </script>
 
